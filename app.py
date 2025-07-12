@@ -15,12 +15,20 @@ RSS_FEEDS = {
     'micul Toma': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCySFpz4yYjG87ZM9rwxgLLw',
     'X Ambassadors': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCBv5tYsc0zm7RCum-umdIBA',
     'Code with Ania Kubów': 'https://www.youtube.com/feeds/videos.xml?channel_id=UC5DNytAJ6_FISueUfzZCVsw',
+    'Ableton': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCgWZYUZjiidjWgfs95pJrWg',
+    'Benn Jordan': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCshObcm-nLhbu8MY50EZ5Ng',
+    'Chase Eagleson': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCuczDG93UY0xzmdMe_QnaFA',
+    'Ed Lawrence': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCb4XiEOeJulWu4WGhwnDqjw',
+    'DOC': 'https://www.youtube.com/feeds/videos.xml?channel_id=UC_YTZ-ktTUmTEK9SJ7Q7tTA',
+    'AI Coffee Break with Letitia': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCMLtBahI5DMrt0NPvDSoIRQ',
+    'Sam Tompkins': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCN-lWv8IwDNljiJA6oDCERA',
 
 }
 
 # YouTube RSS Feeds
 sources = ["COLORS", "AI Search", "Sam Witteveen", "Fireship", "MICUTZU OFFICIAL", "ThePrimeagen", "Tech With Tim", "micul Toma"
-            , "X Ambassadors", "Code with Ania Kubów"]
+            , "X Ambassadors", "Code with Ania Kubów", "Ableton", "Benn Jordan", "Chase Eagleson", "Ed Lawrence", "DOC"
+            , "AI Coffee Break with Letitia", "Sam Tompkins"]
 
 @app.route('/')
 def index():
@@ -55,8 +63,7 @@ def index():
 
 @app.route('/search')
 def search():
-    query = request.args.get('q')
-
+    query = request.args.get('q', '').strip()
     articles = []
     for source, feed in RSS_FEEDS.items():
         parsed_feed = feedparser.parse(feed)
@@ -67,7 +74,12 @@ def search():
         ]
         articles.extend(entries)
 
-    results = [article for article in articles if query.lower() in article[1].title.lower()]
+    # Search in both video title and source/channel name
+    results = [
+        article for article in articles
+        if (article[1].title and query.lower() in article[1].title.lower())
+        or (query.lower() in article[0].lower())
+    ]
 
     for source, entry in results:
         if source in sources and hasattr(entry, "yt_videoid"):
