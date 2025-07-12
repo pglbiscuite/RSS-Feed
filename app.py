@@ -8,11 +8,15 @@ RSS_FEEDS = {
     'COLORS': 'https://www.youtube.com/feeds/videos.xml?channel_id=UC2Qw1dzXDBAZPwS7zm37g8g',
     'AI Search': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCIgnGlGkVRhd4qNFcEwLL4A',
     'Sam Witteveen': 'https://www.youtube.com/feeds/videos.xml?channel_id=UC55ODQSvARtgSyc8ThfiepQ',
+    'Fireship': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCsBjURrPoezykLs9EqgamOA',
+    'MICUTZU OFFICIAL': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCAaqUlKbywt__K4jvlrRdbA',
     
     # 'Wall Street Journal': 'https://feeds.a.dj.com/rss/RSSMarketsMain.xml',
     # 'CNBC': 'https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=15839069'
 }
 
+# YouTube RSS Feeds
+sources = ["COLORS", "AI Search", "Sam Witteveen", "Fireship", "MICUTZU OFFICIAL"]
 
 @app.route('/')
 def index():
@@ -35,8 +39,7 @@ def index():
     end = start + per_page
     paginated_articles = articles[start:end]
 
-    # YouTube RSS Feeds
-    sources = ["COLORS", "AI Search", "Sam Witteveen"]
+    
 
     for source, entry in paginated_articles:
         if source in sources and hasattr(entry, "yt_videoid"):
@@ -63,7 +66,7 @@ def search():
     results = [article for article in articles if query.lower() in article[1].title.lower()]
 
     for source, entry in results:
-        if source == "COLORS" and hasattr(entry, "yt_videoid"):
+        if source in sources and hasattr(entry, "yt_videoid"):
             entry.thumbnail_url = f"https://img.youtube.com/vi/{entry.yt_videoid}/hqdefault.jpg"
 
     return render_template('search_results.html', articles=results, query=query)

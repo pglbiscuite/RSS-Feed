@@ -4,10 +4,17 @@
     <h2>Search Results For: {{ query }}</h2>
     <div class="articles">
         {% for article in articles %}
-            <article>
-                <h2><a href="{{ article[1].link }}">{{ article[1].title }}</a></h2>
-                <p>{{ article[1].published }}</p>
-                <p>Source: {{ article[0] }}</p>
+            <article class="article-flex">
+                <div class="thumb-col">
+                    {% if article[1].thumbnail_url %}
+                        <img src="{{ article[1].thumbnail_url }}" alt="Thumbnail" style="max-width:180px;">
+                    {% endif %}
+                </div>
+                <div class="info-col">
+                    <h2><a href="{{ article[1].link }}">{{ article[1].title }}</a></h2>
+                    <p>{{ article[1].published }}</p>
+                    <p>Source: {{ article[0] }}</p>
+                </div>
             </article>
         {% endfor %}
     </div>
