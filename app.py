@@ -10,13 +10,17 @@ RSS_FEEDS = {
     'Sam Witteveen': 'https://www.youtube.com/feeds/videos.xml?channel_id=UC55ODQSvARtgSyc8ThfiepQ',
     'Fireship': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCsBjURrPoezykLs9EqgamOA',
     'MICUTZU OFFICIAL': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCAaqUlKbywt__K4jvlrRdbA',
-    
-    # 'Wall Street Journal': 'https://feeds.a.dj.com/rss/RSSMarketsMain.xml',
-    # 'CNBC': 'https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=15839069'
+    'ThePrimeagen': 'https://www.youtube.com/feeds/videos.xml?channel_id=UC8ENHE5xdFSwx71u3fDH5Xw',
+    'Tech With Tim': 'https://www.youtube.com/feeds/videos.xml?channel_id=UC4JX40jDee_tINbkjycV4Sg',
+    'micul Toma': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCySFpz4yYjG87ZM9rwxgLLw',
+    'X Ambassadors': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCBv5tYsc0zm7RCum-umdIBA',
+    'Code with Ania Kubów': 'https://www.youtube.com/feeds/videos.xml?channel_id=UC5DNytAJ6_FISueUfzZCVsw',
+
 }
 
 # YouTube RSS Feeds
-sources = ["COLORS", "AI Search", "Sam Witteveen", "Fireship", "MICUTZU OFFICIAL"]
+sources = ["COLORS", "AI Search", "Sam Witteveen", "Fireship", "MICUTZU OFFICIAL", "ThePrimeagen", "Tech With Tim", "micul Toma"
+            , "X Ambassadors", "Code with Ania Kubów"]
 
 @app.route('/')
 def index():
