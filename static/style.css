@@ -2,13 +2,13 @@
 body {
     font-family: 'Jersey 15', sans-serif;
     background-color: #000000;
-    color: #333;
+    color: #89cff0;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #1e1e1e;
+    background-color: #000000;
     color: #6f2DAB;
     padding: 15px 0;
     text-align: center;
@@ -43,7 +43,7 @@ header button {
 }
 
 header button:hover {
-    background-color: #0056b3;
+    background-color: #89cff0;
 }
 
 .articles {

@@ -6,7 +6,9 @@ app = Flask(__name__)
 
 RSS_FEEDS = {
     'COLORS': 'https://www.youtube.com/feeds/videos.xml?channel_id=UC2Qw1dzXDBAZPwS7zm37g8g',
-    # 'Hacker News': 'https://news.ycombinator.com/rss',
+    'AI Search': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCIgnGlGkVRhd4qNFcEwLL4A',
+    'Sam Witteveen': 'https://www.youtube.com/feeds/videos.xml?channel_id=UC55ODQSvARtgSyc8ThfiepQ',
+    
     # 'Wall Street Journal': 'https://feeds.a.dj.com/rss/RSSMarketsMain.xml',
     # 'CNBC': 'https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=15839069'
 }
@@ -33,8 +35,11 @@ def index():
     end = start + per_page
     paginated_articles = articles[start:end]
 
+    # YouTube RSS Feeds
+    sources = ["COLORS", "AI Search", "Sam Witteveen"]
+
     for source, entry in paginated_articles:
-        if source == "COLORS" and hasattr(entry, "yt_videoid"):
+        if source in sources and hasattr(entry, "yt_videoid"):
             entry.thumbnail_url = f"https://img.youtube.com/vi/{entry.yt_videoid}/hqdefault.jpg"
 
     return render_template('index.html', articles=paginated_articles, page=page,
