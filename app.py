@@ -17,7 +17,11 @@ def index():
     articles = []
     for source, feed in RSS_FEEDS.items():
         parsed_feed = feedparser.parse(feed)
-        entries = [(source, entry) for entry in parsed_feed.entries]
+        entries = [
+            (source, entry)
+            for entry in parsed_feed.entries
+            if '/shorts/' not in entry.link
+        ]
         articles.extend(entries)
 
     articles = sorted(articles, key=lambda x: x[1].published_parsed, reverse=True)
@@ -28,6 +32,10 @@ def index():
     start = (page-1) * per_page
     end = start + per_page
     paginated_articles = articles[start:end]
+
+    for source, entry in paginated_articles:
+        if source == "COLORS" and hasattr(entry, "yt_videoid"):
+            entry.thumbnail_url = f"https://img.youtube.com/vi/{entry.yt_videoid}/hqdefault.jpg"
 
     return render_template('index.html', articles=paginated_articles, page=page,
                            total_pages = total_articles // per_page + 1)
@@ -40,10 +48,18 @@ def search():
     articles = []
     for source, feed in RSS_FEEDS.items():
         parsed_feed = feedparser.parse(feed)
-        entries = [(source, entry) for entry in parsed_feed.entries]
+        entries = [
+            (source, entry)
+            for entry in parsed_feed.entries
+            if '/shorts/' not in entry.link
+        ]
         articles.extend(entries)
 
     results = [article for article in articles if query.lower() in article[1].title.lower()]
+
+    for source, entry in results:
+        if source == "COLORS" and hasattr(entry, "yt_videoid"):
+            entry.thumbnail_url = f"https://img.youtube.com/vi/{entry.yt_videoid}/hqdefault.jpg"
 
     return render_template('search_results.html', articles=results, query=query)
 
