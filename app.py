@@ -4,6 +4,8 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+
+# Add Your RSS Feeds Here
 RSS_FEEDS = {
     'COLORS': 'https://www.youtube.com/feeds/videos.xml?channel_id=UC2Qw1dzXDBAZPwS7zm37g8g',
     'AI Search': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCIgnGlGkVRhd4qNFcEwLL4A',
@@ -30,7 +32,7 @@ RSS_FEEDS = {
 
 }
 
-# YouTube RSS Feeds
+# Add names YouTube RSS Feeds here to display the thumbnail in the interface and search results
 sources = ["COLORS", "AI Search", "Sam Witteveen", "Fireship", "MICUTZU OFFICIAL", "ThePrimeagen", "Tech With Tim", "micul Toma"
             , "X Ambassadors", "Code with Ania Kubów", "Ableton", "Benn Jordan", "Chase Eagleson", "Ed Lawrence", "DOC"
             , "AI Coffee Break with Letitia", "Sam Tompkins", "Joseph Solomon", "RÜFÜS DU SOL"
