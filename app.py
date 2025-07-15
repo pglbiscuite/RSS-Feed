@@ -22,13 +22,14 @@ RSS_FEEDS = {
     'Chase Eagleson': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCuczDG93UY0xzmdMe_QnaFA',
     'Ed Lawrence': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCb4XiEOeJulWu4WGhwnDqjw',
     'DOC': 'https://www.youtube.com/feeds/videos.xml?channel_id=UC_YTZ-ktTUmTEK9SJ7Q7tTA',
-    'AI Coffee Break with Letitia': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCMLtBahI5DMrt0NPvDSoIRQ',
+    'AI Coffee Break with Letitia': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCobqgqE4i5Kf7wrxRxhToQA',
     'Sam Tompkins': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCN-lWv8IwDNljiJA6oDCERA',
     'Joseph Solomon': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCdF-MldtDn4EW8-DlQqPD_g',
     'RÜFÜS DU SOL': 'https://www.youtube.com/feeds/videos.xml?channel_id=UC6iin46o7SrAsnl9ig__vlw',
     'Peter McKinnon': 'https://www.youtube.com/feeds/videos.xml?channel_id=UC3DkFux8Iv-aYnTRWzwaiBA',
     'Charles Hoskinson': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCiJiqEvUZxT6isIaXK7RXTg',
     'Diud': 'https://www.youtube.com/feeds/videos.xml?channel_id=UCYpomzPRtiAa8Tm_BCg1bgA',
+    'NetworkChuck': 'https://www.youtube.com/feeds/videos.xml?channel_id=UC9x0AN7BWHpCDHSm9NiJFJQ',
 
 }
 
@@ -36,7 +37,7 @@ RSS_FEEDS = {
 sources = ["COLORS", "AI Search", "Sam Witteveen", "Fireship", "MICUTZU OFFICIAL", "ThePrimeagen", "Tech With Tim", "micul Toma"
             , "X Ambassadors", "Code with Ania Kubów", "Ableton", "Benn Jordan", "Chase Eagleson", "Ed Lawrence", "DOC"
             , "AI Coffee Break with Letitia", "Sam Tompkins", "Joseph Solomon", "RÜFÜS DU SOL"
-            , "Peter McKinnon", "Charles Hoskinson", "The Crypto Dog", "Diud"]
+            , "Peter McKinnon", "Charles Hoskinson", "The Crypto Dog", "Diud", "NetworkChuck"]
 
 @app.route('/')
 def index():
